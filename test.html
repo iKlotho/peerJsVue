@@ -1,0 +1,69 @@
+<html>
+
+    <head>
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div class="container mx-auto h-full flex justify-center items-center">
+            <div id="app" class="">
+                <div class="mb-4">
+                    <div class="flex justify-center">
+                        My peer id is - <div v-if="myPeerId">{{ myPeerId }}</div><div v-else> Loading... </div>
+                    </div>
+                </div>
+                <div v-if="!isConnected">
+                    <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
+                        <form @submit.prevent="connectToPeer" action="#">
+                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                             Enter peerId to connect
+                          </label>
+                          <input 
+                              v-model="destPid"
+                              class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg
+                              py-2 px-4 block w-full appearance-none leading-normal mr-3" type="text" placeholder="">
+                          <button
+                             class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700
+                             text-sm border-4 text-white py-1 px-2 rounded" type="submit">
+                             Connect
+                          </button>
+                        </form>
+                    </div>
+                </div>
+                <div v-else>
+                      <div class="px-6 py-4 flex-1 overflow-y-scroll h-64">
+                            <div v-for="message in messages" class="flex items-start mb-4 text-sm">
+                                <img :src="message.peerId | makeImage" class="w-10 h-10 rounded mr-3">
+                                <div class="flex-1 overflow-hidden">
+                                    <div>
+                                        <span class="font-bold">{{ message.peerId }}</span>
+                                        <span class="text-grey text-xs">11:46</span>
+                                    </div>
+                                    <p class="text-black leading-normal">{{ message.content }}</p>
+                                </div>
+                            </div>
+                            <div ref="end" style="float: left; clear: both;"></div>
+                        </div>
+                        <form @submit.prevent="sendMessage" action="#">
+                         <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
+                             Enter message to send
+                          </label>
+                          <input 
+                              v-model="userMsg"
+                              class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg
+                              py-2 px-4 block w-full appearance-none leading-normal mr-3" type="text" placeholder="Hello">
+                          <button
+                             class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700
+                             text-sm border-4 text-white py-1 px-2 rounded" type="submit">
+                              Send
+                          </button>
+                        </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="index.js"></script>
+    </body>
+
+</html>
