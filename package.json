@@ -1,0 +1,27 @@
+{
+  "name": "peerjsvue",
+  "version": "1.0.0",
+  "description": "Vue peer chat app with peerjs",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon -r esm ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iKlotho/peerJsVue.git"
+  },
+  "author": "Umut Kahriman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iKlotho/peerJsVue/issues"
+  },
+  "homepage": "https://github.com/iKlotho/peerJsVue#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1"
+  }
+}
